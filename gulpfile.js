@@ -31,7 +31,8 @@ function styles() {
 
 function scripts() {
   return src([
-    'node_modules/jquery/dist/jquery.js',
+   'node_modules/jquery/dist/jquery.js',
+   'node_modules/slick-carousel/slick/slick.js',
    'app/js/main.js' 
   ])
   .pipe(concat('main.min.js'))
@@ -74,7 +75,7 @@ function cleanDist() {
 function watching() {
   watch(['app/scss/**/*.scss'], styles);
   watch(['app/js/**/*.js', '!app/js/main.min.js'], scripts);
-  watch(['app/**/*.html']).removeAllListeners('change', browserSync.reload);
+  watch(['app/**/*.html']).on('change', browserSync.reload);
 }
 
 exports.styles  = styles;
